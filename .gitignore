@@ -1,0 +1,5 @@
+/node_modules/**
+/docs-perso/**
+
+!/node_modules/ConnectionManager.js
+!/node_modules/Utils.js
