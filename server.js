@@ -1,6 +1,7 @@
 var express = require("express"),
     app = express(),
-    http = require("http");
+    http = require("http"),
+    ConnectionManager = require("./node_modules/ConnectionManager");
 
 
 
@@ -8,10 +9,14 @@ var express = require("express"),
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("X-Auth-Token", process.env.FOOTBALLAPIKEY);
   next();
 });
 
 
+
+let cm = new ConnectionManager(app);
+/*
 app.get("/", (req, res) => {
 
     var get_req = http.get("http://api.football-data.org/v1/fixtures?timeFrame=n1", (data_res) => {
@@ -38,6 +43,6 @@ app.get("/", (req, res) => {
     
     
 });
-
+*/
 
 app.listen(3000);
