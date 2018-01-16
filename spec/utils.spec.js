@@ -65,3 +65,20 @@ describe("utils.generateRequest", function() {
    });
     
 });
+
+describe("utils.getCountryClass", function() {
+    beforeAll(function() {
+            this.utils = new Utils();
+    });
+    
+    it("should return the correct value for specific competitions", function() {
+       expect(this.utils.getCountryClass("PL")).toEqual("england");
+        expect(this.utils.getCountryClass("DED")).toEqual("netherlands");
+        expect(this.utils.getCountryClass("FL1")).toEqual("france");
+        expect(this.utils.getCountryClass("BL1")).toEqual("germany");
+        expect(this.utils.getCountryClass("SA")).toEqual("italy");
+        expect(this.utils.getCountryClass("BSA")).toEqual("brazil");
+        expect(this.utils.getCountryClass("AAL")).toEqual("australia");
+        expect(this.utils.getCountryClass("CL")).toEqual("europe");
+    });
+})
