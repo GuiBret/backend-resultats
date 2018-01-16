@@ -50,6 +50,32 @@ describe("cm.getCountryList", function() {
     });
 });
 
+describe("cm.getCountryList", function() {
+    beforeAll(function() {
+        this.cm = new ConnectionManager(app);
+        this.res = { // Fake res object
+            send: function() {
+                
+            }
+        }
+        
+        this.req = {
+            params : {
+                
+            }
+        }
+    });
+    
+    it("should return all competitions to the user ", function(done) {
+        
+        spyOn(this.res, "send");
+        this.cm.getAllCompetitions(this.req, this.res).then((data) => {
+          expect(this.res.send).toHaveBeenCalledWith(jasmine.any(Object)); 
+            done();
+       });
+    });
+})
+
 
 describe("cm.getCompetitionResults", function() {
    beforeAll(function() {
@@ -90,22 +116,35 @@ describe("cm.getCompetitionRankings", function() {
         }
         
         this.req = {
-            idcompetition: 432
+            params: {
+                idcompetition: 432 // Euro 2016, not a championship    
+            }
+            
         }
     })
-   it("should not return anything if it is not a championship", function(done) {
+   it("should not raise an exception if it is not a championship", function(done) {
        this.cm.getCompetitionRankings(this.req, this.res).then((data) => {
-           console.log("Data : ");
-            console.log(data);
+       }).catch((err) => {
+
+           expect(err).toEqual(404);
            done();
        });
    });
+    
+    it("should return the proper ranking to the client if we select an existing competition", function(done) {
+        this.req.params.idcompetition = 426; // Premier League 2016
+        spyOn(this.res, "send");
+        this.cm.getCompetitionRankings(this.req, this.res).then((data) => {
+
+            expect(this.res.send).toHaveBeenCalledWith(jasmine.any(Object));
+            done();
+        });
+    })
 });
 
-
-
-describe("cm.getData", function() {
-   beforeAll(function() {
+describe("cm.getTeamRoster", function() {
+    
+    beforeAll(function() {
        this.cm = new ConnectionManager(app);
         this.res = { // Fake res object
             send: function() {
@@ -114,21 +153,90 @@ describe("cm.getData", function() {
         };
        this.req = {
            params: {
-               idcompetition: 398 // Premier League
+               teamid: 245 // Non-existing ID
            }
        }
+   });
+   it("should raise an exception if the ID doesn't match a team", function(done) {
+
+       this.cm.getTeamRoster(this.req, this.res).then(() => {
+           
+       }).catch((err) => {
+           expect(err).toEqual(404);
+           done(); 
+       });
+   });
+    
+    it("should return the roster to the client if we select an existing team", function(done) {
+        this.req.params.teamid = 66; // Manchester United
+        spyOn(this.res, "send");
+        this.cm.getTeamRoster(this.req, this.res).then((data) => {
+           expect(this.res.send).toHaveBeenCalledWith(jasmine.any(Object));
+            done();
+        }).catch((err) => {
+
+        });
+        
+    });
+});
+
+
+describe("cm.getTeamInfo", function() {
+    
+    beforeAll(function() {
+       this.cm = new ConnectionManager(app);
+        this.res = { // Fake res object
+            send: function() {
+                
+            }
+        };
+       this.req = {
+           params: {
+               teamid: 245 // Non-existing ID
+           }
+       }
+   });
+   it("should raise an exception if we don't select an existing team", function(done) {
+       
+       this.cm.getTeamInfo(this.req, this.res).then(() => {
+           
+       }).catch((err) => {
+           expect(err).toEqual(404);
+           done(); 
+       });
+       
+   });
+    
+    it("should return the team info to the client if we select an existing team", function(done) {
+        this.req.params.teamid = 66; // Manchester United
+        spyOn(this.res, "send");
+        this.cm.getTeamInfo(this.req, this.res).then((data) => {
+           expect(this.res.send).toHaveBeenCalledWith(jasmine.any(Object));
+            done();
+        }).catch((err) => {
+
+        });
+    });
+});
+
+
+
+describe("cm.getData", function() {
+   beforeAll(function() {
+       this.cm = new ConnectionManager(app);
+        this.res = { // Fake res object
+            send: function() {}
+        };
+
        
    });
     
     it("should catch an error if the data is restricted (prior to 2016)", function(done) {
         
         this.cm.getData("http://api.football-data.org/v1/competitions/398").then((data) => {
-            //console.log('Attente restricted');
-            //expect(err.error).toEqual("The resource you are looking for is restricted");
-            done();
         }).catch((err) => {
-            console.log('Attente restricted');
-            expect(err.error).toEqual("The resource you are looking for is restricted");
+
+            expect(err).toEqual(403);
             done();
     
         });
