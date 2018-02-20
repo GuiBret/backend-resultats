@@ -16,5 +16,4 @@ app.use(function(req, res, next) {
 
 let cm = new ConnectionManager(app);
 
-
 app.listen(3000);
