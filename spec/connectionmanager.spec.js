@@ -259,3 +259,13 @@ describe("cm.getData", function() {
     });
     
 });
+
+describe("cm.getCompetitionsByCountry", function() {
+    beforeAll(function(done) {
+       done(); 
+    });
+    
+    it("should return the correct competition for a specific country", function(done) {
+        
+    })
+})
