@@ -277,8 +277,10 @@ describe("cm.getCompetitionsByCountry", function() {
     });
     
     it("should return the correct competition for a specific country", function(done) {
-        this.cm.getCompetitionsByCountry(this.req, this.res).then((res) => {
-            expect(res.length).toEqual(4);
+        spyOn(this.res, "send");
+        this.cm.getCompetitionsByCountry(this.req, this.res).then((data) => {
+            
+            expect(this.res.send).toHaveBeenCalled();
             done();
         })
         

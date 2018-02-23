@@ -73,7 +73,8 @@ describe("utils.getCountryClass", function() {
     });
     
     it("should return the correct value for specific competitions", function() {
-       expect(this.utils.getCountryClass("PL")).toEqual("england");
+        expect(this.utils.getCountryClass("PL")).toEqual("england");
+        
         expect(this.utils.getCountryClass("DED")).toEqual("netherlands");
         expect(this.utils.getCountryClass("FL1")).toEqual("france");
         expect(this.utils.getCountryClass("BL1")).toEqual("germany");
@@ -82,4 +83,17 @@ describe("utils.getCountryClass", function() {
         expect(this.utils.getCountryClass("AAL")).toEqual("australia");
         expect(this.utils.getCountryClass("CL")).toEqual("europe");
     });
-})
+});
+
+
+describe("utils.getCompetitionsById", function() {
+    beforeAll(function() {
+        this.utils = new Utils();
+    });
+    
+    it("should return the correct competitions for specific countries", function() {
+       let result = this.utils.getCompetitionsById("de");
+        
+        expect(result.length).toEqual(3);
+    });
+});
