@@ -6,14 +6,15 @@ describe("utils.getCompetitionsByCountry", function(){
    });
     
     it("should return the correct elements for each competition", function() {
-        expect(this.utils.getCompetitionsByCountry("EN").length).toEqual(4);
-        expect(this.utils.getCompetitionsByCountry("NL").length).toEqual(1);
-        expect(this.utils.getCompetitionsByCountry("FR").length).toEqual(2);
-        expect(this.utils.getCompetitionsByCountry("DE").length).toEqual(3);
-        expect(this.utils.getCompetitionsByCountry("ES").length).toEqual(2);
-        expect(this.utils.getCompetitionsByCountry("IT").length).toEqual(2);
-        expect(this.utils.getCompetitionsByCountry("EU").length).toEqual(1);
-        expect(this.utils.getCompetitionsByCountry("AU").length).toEqual(1);
+        expect(this.utils.getCompetitionsByCountry("en").length).toEqual(4);
+        expect(this.utils.getCompetitionsByCountry("nl").length).toEqual(1);
+        expect(this.utils.getCompetitionsByCountry("fr").length).toEqual(2);
+        expect(this.utils.getCompetitionsByCountry("de").length).toEqual(3);
+        expect(this.utils.getCompetitionsByCountry("es").length).toEqual(1);
+        expect(this.utils.getCompetitionsByCountry("pt").length).toEqual(1);
+        expect(this.utils.getCompetitionsByCountry("it").length).toEqual(2);
+        expect(this.utils.getCompetitionsByCountry("eu").length).toEqual(1);
+        expect(this.utils.getCompetitionsByCountry("au").length).toEqual(1);
         
     });
     

@@ -255,17 +255,33 @@ describe("cm.getData", function() {
            expect(data.matchday).toEqual(38); // The championship should be finished 
             done();
             
+        }).catch((err) => {
+          console.log(err);  
         });
     });
     
 });
 
 describe("cm.getCompetitionsByCountry", function() {
-    beforeAll(function(done) {
-       done(); 
+    beforeAll(function() {
+        this.cm = new ConnectionManager(app);
+        this.req = {
+            params: {
+                "countryid": "en"
+            }
+        }
+        this.res = { // Fake res object
+            send: function() {}
+        };
+       
     });
     
     it("should return the correct competition for a specific country", function(done) {
+        this.cm.getCompetitionsByCountry(this.req, this.res).then((res) => {
+            expect(res.length).toEqual(4);
+            done();
+        })
+        
         
     })
 })
