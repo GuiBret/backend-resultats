@@ -1,25 +1,25 @@
 const Utils = require("../node_modules/Utils");
 
-describe("utils.getCompetitionsByCountry", function(){
+describe("utils.getCompetitionsByCountryId", function(){
    beforeAll(function() {
        this.utils = new Utils();
    });
     
     it("should return the correct elements for each competition", function() {
-        expect(this.utils.getCompetitionsByCountry("en").length).toEqual(4);
-        expect(this.utils.getCompetitionsByCountry("nl").length).toEqual(1);
-        expect(this.utils.getCompetitionsByCountry("fr").length).toEqual(2);
-        expect(this.utils.getCompetitionsByCountry("de").length).toEqual(3);
-        expect(this.utils.getCompetitionsByCountry("es").length).toEqual(1);
-        expect(this.utils.getCompetitionsByCountry("pt").length).toEqual(1);
-        expect(this.utils.getCompetitionsByCountry("it").length).toEqual(2);
-        expect(this.utils.getCompetitionsByCountry("eu").length).toEqual(1);
-        expect(this.utils.getCompetitionsByCountry("au").length).toEqual(1);
+        expect(this.utils.getCompetitionsByCountryId("en").length).toEqual(4);
+        expect(this.utils.getCompetitionsByCountryId("nl").length).toEqual(1);
+        expect(this.utils.getCompetitionsByCountryId("fr").length).toEqual(2);
+        expect(this.utils.getCompetitionsByCountryId("de").length).toEqual(3);
+        expect(this.utils.getCompetitionsByCountryId("es").length).toEqual(1);
+        expect(this.utils.getCompetitionsByCountryId("pt").length).toEqual(1);
+        expect(this.utils.getCompetitionsByCountryId("it").length).toEqual(2);
+        expect(this.utils.getCompetitionsByCountryId("eu").length).toEqual(1);
+        expect(this.utils.getCompetitionsByCountryId("au").length).toEqual(1);
         
     });
     
     it("should return -1 if the passed argument is not defined", function() {
-        expect(this.utils.getCompetitionsByCountry("FD")).toEqual(-1);
+        expect(this.utils.getCompetitionsByCountryId("FD")).toEqual(-1);
     });
 });
 
@@ -92,7 +92,7 @@ describe("utils.getCompetitionsById", function() {
     });
     
     it("should return the correct competitions for specific countries", function() {
-       let result = this.utils.getCompetitionsById("de");
+       let result = this.utils.getCompetitionsByCountryId("de");
         
         expect(result.length).toEqual(3);
     });
