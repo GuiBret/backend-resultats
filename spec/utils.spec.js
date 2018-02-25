@@ -104,8 +104,8 @@ describe("utils.getCountryCaption", function() {
     })
     
     it("should return the correct caption when provided an ID", function() {
-        let result = this.utils.getCountryCaption("en");
-        
-        expect(result).toEqual("england");
-    })
+        expect(this.utils.getCountryCaption("en")).toEqual("england");
+        expect(this.utils.getCountryCaption("de")).toEqual("germany");
+        expect(this.utils.getCountryCaption("fr")).toEqual("france");
+    });
 })
