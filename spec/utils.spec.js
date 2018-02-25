@@ -1,25 +1,25 @@
 const Utils = require("../node_modules/Utils");
 
-describe("utils.getCompetitionsByCountryId", function(){
+describe("utils.getCompetitionsByCountryShort", function(){
    beforeAll(function() {
        this.utils = new Utils();
    });
     
     it("should return the correct elements for each competition", function() {
-        expect(this.utils.getCompetitionsByCountryId("en").length).toEqual(4);
-        expect(this.utils.getCompetitionsByCountryId("nl").length).toEqual(1);
-        expect(this.utils.getCompetitionsByCountryId("fr").length).toEqual(2);
-        expect(this.utils.getCompetitionsByCountryId("de").length).toEqual(3);
-        expect(this.utils.getCompetitionsByCountryId("es").length).toEqual(1);
-        expect(this.utils.getCompetitionsByCountryId("pt").length).toEqual(1);
-        expect(this.utils.getCompetitionsByCountryId("it").length).toEqual(2);
-        expect(this.utils.getCompetitionsByCountryId("eu").length).toEqual(1);
-        expect(this.utils.getCompetitionsByCountryId("au").length).toEqual(1);
+        expect(this.utils.getCompetitionsByCountryShort("en").length).toEqual(4);
+        expect(this.utils.getCompetitionsBycountryShort("nl").length).toEqual(1);
+        expect(this.utils.getCompetitionsBycountryShort("fr").length).toEqual(2);
+        expect(this.utils.getCompetitionsBycountryShort("de").length).toEqual(3);
+        expect(this.utils.getCompetitionsBycountryShort("es").length).toEqual(1);
+        expect(this.utils.getCompetitionsBycountryShort("pt").length).toEqual(1);
+        expect(this.utils.getCompetitionsBycountryShort("it").length).toEqual(2);
+        expect(this.utils.getCompetitionsBycountryShort("eu").length).toEqual(1);
+        expect(this.utils.getCompetitionsBycountryShort("au").length).toEqual(1);
         
     });
     
     it("should return -1 if the passed argument is not defined", function() {
-        expect(this.utils.getCompetitionsByCountryId("FD")).toEqual(-1);
+        expect(this.utils.getCompetitionsByCountryShort("FD")).toEqual(-1);
     });
 });
 
@@ -85,18 +85,6 @@ describe("utils.getCountryClass", function() {
     });
 });
 
-
-describe("utils.getCompetitionsById", function() {
-    beforeAll(function() {
-        this.utils = new Utils();
-    });
-    
-    it("should return the correct competitions for specific countries", function() {
-       let result = this.utils.getCompetitionsByCountryId("de");
-        
-        expect(result.length).toEqual(3);
-    });
-});
 
 describe("utils.getCountryCaption", function() {
     beforeAll(function() {
