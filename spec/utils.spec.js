@@ -7,14 +7,14 @@ describe("utils.getCompetitionsByCountryShort", function(){
     
     it("should return the correct elements for each competition", function() {
         expect(this.utils.getCompetitionsByCountryShort("en").length).toEqual(4);
-        expect(this.utils.getCompetitionsBycountryShort("nl").length).toEqual(1);
-        expect(this.utils.getCompetitionsBycountryShort("fr").length).toEqual(2);
-        expect(this.utils.getCompetitionsBycountryShort("de").length).toEqual(3);
-        expect(this.utils.getCompetitionsBycountryShort("es").length).toEqual(1);
-        expect(this.utils.getCompetitionsBycountryShort("pt").length).toEqual(1);
-        expect(this.utils.getCompetitionsBycountryShort("it").length).toEqual(2);
-        expect(this.utils.getCompetitionsBycountryShort("eu").length).toEqual(1);
-        expect(this.utils.getCompetitionsBycountryShort("au").length).toEqual(1);
+        expect(this.utils.getCompetitionsByCountryShort("nl").length).toEqual(1);
+        expect(this.utils.getCompetitionsByCountryShort("fr").length).toEqual(2);
+        expect(this.utils.getCompetitionsByCountryShort("de").length).toEqual(3);
+        expect(this.utils.getCompetitionsByCountryShort("es").length).toEqual(1);
+        expect(this.utils.getCompetitionsByCountryShort("pt").length).toEqual(1);
+        expect(this.utils.getCompetitionsByCountryShort("it").length).toEqual(2);
+        expect(this.utils.getCompetitionsByCountryShort("eu").length).toEqual(1);
+        expect(this.utils.getCompetitionsByCountryShort("au").length).toEqual(1);
         
     });
     
