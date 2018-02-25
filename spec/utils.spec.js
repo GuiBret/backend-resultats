@@ -97,3 +97,15 @@ describe("utils.getCompetitionsById", function() {
         expect(result.length).toEqual(3);
     });
 });
+
+describe("utils.getCountryCaption", function() {
+    beforeAll(function() {
+        this.utils = new Utils();
+    })
+    
+    it("should return the correct caption when provided an ID", function() {
+        let result = this.utils.getCountryCaption("en");
+        
+        expect(result).toEqual("england");
+    })
+})
